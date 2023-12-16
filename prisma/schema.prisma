@@ -1,0 +1,51 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Company {
+  id           String    @id @default(uuid())
+  name         String    @unique
+  logo_path    String
+  created_date DateTime  @default(now())
+  reviews      Reviews[]
+}
+
+// Add to store pdf file and maybe go passwordless
+model User {
+  id         String @id @default(uuid())
+  first_name String
+  last_name  String
+  email      String
+  password   String
+}
+
+model Reviews {
+  id               String   @id @default(uuid())
+  total_rating     Decimal
+  learn_rating     Decimal
+  fun_rating       Decimal
+  challenge_rating Decimal
+  pay              Decimal
+  review           String
+  role             String
+  would_retake     Boolean
+  created_date     DateTime @default(now())
+  company          Company  @relation(fields: [companyID], references: [id])
+  companyID        String
+
+  @@index([companyID])
+}
+
+model CompanyAddRequest {
+  id           String   @id @default(uuid())
+  name         String   @unique
+  count        Int
+  added        Boolean  @default(false)
+  created_date DateTime @default(now())
+}
