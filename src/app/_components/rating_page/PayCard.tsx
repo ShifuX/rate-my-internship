@@ -15,7 +15,7 @@ const PayCard = ({ textLabel, inputID, placeHolder }: PropI) => {
           placeholder={placeHolder}
           className="w-52 h-12 rounded-3xl border-2 text-center bg-no-repeat bg-contain"
           style={{
-            backgroundImage: `url('/bag-icon.jpg')`,
+            backgroundImage: `url('/bag-icon.JPG')`,
           }}
           max={200.0}
           min={0.0}
