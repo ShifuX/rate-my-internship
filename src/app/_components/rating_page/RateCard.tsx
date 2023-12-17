@@ -4,11 +4,14 @@ import { useState } from "react";
 
 interface PropsI {
   labelName: string;
+  inputID: string;
 }
 
-const RateCard = ({ labelName }: PropsI) => {
+const RateCard = ({ labelName, inputID }: PropsI) => {
   const [hoverMssg, setHoverMssg] = useState("");
   const [selectedRating, setSelectedRating] = useState(0);
+  const [selectedMssg, setSelectedMssg] = useState("");
+
   return (
     <div className="w-1/4 h-32 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{labelName}:</div>
@@ -19,7 +22,10 @@ const RateCard = ({ labelName }: PropsI) => {
           }`}
           onMouseOver={() => setHoverMssg("1 - Awful")}
           onMouseLeave={() => setHoverMssg("")}
-          onClick={() => setSelectedRating(1)}
+          onClick={() => {
+            setSelectedRating(1);
+            setSelectedMssg("1 - Awful");
+          }}
         ></div>
         <div
           className={`w-10 h-10 hover:bg-orange-200 border-2 rounded-3xl ${
@@ -27,7 +33,10 @@ const RateCard = ({ labelName }: PropsI) => {
           } `}
           onMouseOver={() => setHoverMssg("2 - Ok")}
           onMouseLeave={() => setHoverMssg("")}
-          onClick={() => setSelectedRating(2)}
+          onClick={() => {
+            setSelectedRating(2);
+            setSelectedMssg("2 - Ok");
+          }}
         ></div>
         <div
           className={`w-10 h-10 hover:bg-yellow-100 border-2 rounded-3xl ${
@@ -35,7 +44,10 @@ const RateCard = ({ labelName }: PropsI) => {
           }`}
           onMouseOver={() => setHoverMssg("3 - Good")}
           onMouseLeave={() => setHoverMssg("")}
-          onClick={() => setSelectedRating(3)}
+          onClick={() => {
+            setSelectedRating(3);
+            setSelectedMssg("3 - Good");
+          }}
         ></div>
         <div
           className={`w-10 h-10 hover:bg-lime-300 border-2 rounded-3xl ${
@@ -43,7 +55,10 @@ const RateCard = ({ labelName }: PropsI) => {
           }`}
           onMouseOver={() => setHoverMssg("4 - Great")}
           onMouseLeave={() => setHoverMssg("")}
-          onClick={() => setSelectedRating(4)}
+          onClick={() => {
+            setSelectedRating(4);
+            setSelectedMssg("4 - Great");
+          }}
         ></div>
         <div
           className={`w-10 h-10 hover:bg-green-600 border-2 rounded-3xl ${
@@ -51,12 +66,22 @@ const RateCard = ({ labelName }: PropsI) => {
           }`}
           onMouseOver={() => setHoverMssg("5 - Awesome")}
           onMouseLeave={() => setHoverMssg("")}
-          onClick={() => setSelectedRating(5)}
+          onClick={() => {
+            setSelectedRating(5);
+            setSelectedMssg("5 - Awesome");
+          }}
         ></div>
       </div>
-      <div className="text-center ml-36">{hoverMssg}</div>
+      <div className="text-center ml-36">
+        {hoverMssg !== "" ? hoverMssg : selectedMssg}
+      </div>
       <div className="invisible">
-        <input type="text" name="rateBox" value={selectedRating.toString()} />
+        <input
+          type="text"
+          name={inputID}
+          value={selectedRating.toString()}
+          readOnly
+        />
       </div>
     </div>
   );

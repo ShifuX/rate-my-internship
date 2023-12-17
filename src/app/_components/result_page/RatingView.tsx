@@ -13,7 +13,7 @@ const RatingView = ({ company, logo_path }: props) => {
   const router = useRouter();
 
   const RedirectToRatingPage = () => {
-    router.push("/ratecompany");
+    router.push(`/ratecompany/${company}`);
   };
 
   return (

@@ -1,0 +1,27 @@
+interface PropI {
+  textLabel: string | undefined;
+  inputID: string | undefined;
+}
+
+const ReviewCard = ({ textLabel, inputID }: PropI) => {
+  return (
+    <div className="w-2/4 h-5/6 shadow-md border-2 border-grey-100 ">
+      <div className="font-bold pl-2">{textLabel}:</div>
+      <div className="w-full text-center pt-10">Guidlines go here</div>
+      <div className="pt-26">
+        <div className="w-full flex justify-center content-center p-9">
+          <textarea
+            name={inputID}
+            placeholder="What do you want future interns to know?"
+            cols={30}
+            rows={10}
+            maxLength={350}
+            className="border-2 w-full text-md p-4"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ReviewCard;

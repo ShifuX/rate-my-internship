@@ -6,3 +6,6 @@ export { default as RatingDistribution } from "./result_page/RatingDistribution"
 export { default as NavBar } from "./result_page/NavBar";
 export { default as RateCard } from "./rating_page/RateCard";
 export { default as RetakeCard } from "./rating_page/RetakeCard";
+export { default as PayCard } from "./rating_page/PayCard";
+export { default as ReviewCard } from "./rating_page/ReviewCard";
+export { default as SubmitCard } from "./rating_page/SubmitCard";
