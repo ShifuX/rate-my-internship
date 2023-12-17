@@ -1,5 +1,3 @@
-import React from "react";
-
 interface PropI {
   textLabel: string | undefined;
   inputID: string | undefined;
