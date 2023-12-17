@@ -11,7 +11,7 @@ const SearchBar = () => {
     e.preventDefault();
 
     //console.log(searchInput);
-    router.push(`/resultpage/${searchInput}`);
+    router.push(`/resultpage/${searchInput.trimEnd()}`);
   }
 
   return (
