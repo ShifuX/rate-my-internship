@@ -1,5 +1,10 @@
 import { redirect } from "next/navigation";
-import { NavBar, RatingDistribution, RatingView } from "../../_components";
+import {
+  NavBar,
+  RatingDistribution,
+  RatingView,
+  ReviewDisplayCard,
+} from "../../_components";
 
 import prisma from "../../db";
 
@@ -30,14 +35,18 @@ async function getCompany(company: string) {
       name: company,
     },
     include: {
-      reviews: true,
+      reviews: {
+        where: {
+          moderator_reviewed: true,
+        },
+      },
     },
   });
 }
 
 const ResultPage = async ({ params }: { params: { id: string } }) => {
   const company = await getCompany(params.id);
-
+  console.log(company);
   if (company == null) {
     redirect("/notfound");
   }
@@ -48,6 +57,21 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
       <div className="grid grid-cols-2 pl-80 pt-20 w-3/5">
         <RatingView company={company?.name} logo_path={company?.logo_path} />
         <RatingDistribution />
+      </div>
+
+      <div>
+        {company.reviews.map((review) => {
+          return (
+            <ReviewDisplayCard
+              would_retake={review.would_retake}
+              pay={review.pay.toDecimalPlaces(2).toString()}
+              role={review.role}
+              date={review.created_date}
+              review={review.review}
+              key={review.id}
+            />
+          );
+        })}
       </div>
     </div>
   );

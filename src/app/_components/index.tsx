@@ -9,3 +9,4 @@ export { default as RetakeCard } from "./rating_page/RetakeCard";
 export { default as PayCard } from "./rating_page/PayCard";
 export { default as ReviewCard } from "./rating_page/ReviewCard";
 export { default as SubmitCard } from "./rating_page/SubmitCard";
+export { default as ReviewDisplayCard } from "./result_page/ReviewDisplayCard";

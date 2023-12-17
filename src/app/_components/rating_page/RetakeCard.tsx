@@ -12,7 +12,7 @@ const RetakeCard = ({ textLabel, inputID }: PropI) => {
           <div>
             <input
               type="radio"
-              value=""
+              value="1"
               name={inputID}
               className="w-10 h-12 border-2 text-center"
             />
@@ -21,7 +21,7 @@ const RetakeCard = ({ textLabel, inputID }: PropI) => {
           <div>
             <input
               type="radio"
-              value=""
+              value="0"
               name={inputID}
               className="w-10 h-12 border-2 text-center"
             />

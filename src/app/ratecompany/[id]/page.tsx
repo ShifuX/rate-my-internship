@@ -1,3 +1,4 @@
+import prisma from "../../db";
 import {
   PayCard,
   RateCard,
@@ -6,15 +7,56 @@ import {
   SubmitCard,
   TextCard,
 } from "../../_components";
-
-async function addReview(data: FormData) {
-  "use server";
-  // submit to db
-  console.log(data.get("rateBoxLearn")?.toString());
-}
+import { redirect } from "next/navigation";
+import { Prisma } from "@prisma/client";
 
 const page = ({ params }: { params: { id: string } }) => {
   const companyName = params.id;
+
+  async function addReview(data: FormData) {
+    "use server";
+    // submit to db
+    const total_rating = data.get("rateBoxOverall")?.toString();
+    const learn_rating = data.get("rateBoxLearn")?.toString();
+    const fun_rating = data.get("rateBoxFun")?.toString();
+    const challenge_rating = data.get("rateBoxChallenge")?.toString();
+    const pay = data.get("pay")?.toString();
+    const review = data.get("review")?.toString();
+    const role = data.get("Role")?.toString();
+    const retake = data.get("checked")?.toString();
+    const would_retake: boolean = retake === "1" ? true : false;
+
+    //console.log(review);
+    if (
+      !total_rating ||
+      !learn_rating ||
+      !fun_rating ||
+      !challenge_rating ||
+      !pay ||
+      !review ||
+      !role
+    ) {
+      return;
+    }
+
+    await prisma.reviews.create({
+      data: {
+        companyID: companyName,
+        challenge_rating,
+        fun_rating,
+        learn_rating,
+        total_rating,
+        pay: new Prisma.Decimal(pay),
+        review,
+        role,
+        would_retake,
+      },
+    });
+
+    console.log("Submitted");
+    redirect(`/resultpage/${companyName}`);
+  }
+
   return (
     <div className="h-screen">
       <form
