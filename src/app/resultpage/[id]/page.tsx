@@ -59,7 +59,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
         <RatingDistribution />
       </div>
 
-      <div>
+      <div className="pl-80 pb-6">
         {company.reviews.map((review) => {
           return (
             <ReviewDisplayCard
@@ -68,6 +68,8 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
               role={review.role}
               date={review.created_date}
               review={review.review}
+              overallRating={review.total_rating.toString()}
+              challengeRating={review.challenge_rating.toString()}
               key={review.id}
             />
           );

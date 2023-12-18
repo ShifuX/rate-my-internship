@@ -10,3 +10,5 @@ export { default as PayCard } from "./rating_page/PayCard";
 export { default as ReviewCard } from "./rating_page/ReviewCard";
 export { default as SubmitCard } from "./rating_page/SubmitCard";
 export { default as ReviewDisplayCard } from "./result_page/ReviewDisplayCard";
+export { default as ReviewTopInfo } from "./result_page/ReviewTopInfo";
+export { default as ReviewSideRatings } from "./result_page/ReviewSideRatings";

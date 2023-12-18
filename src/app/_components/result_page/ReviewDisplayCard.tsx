@@ -1,28 +1,59 @@
+import { ReviewSideRatings, ReviewTopInfo } from "..";
+
 interface PropsI {
   would_retake: boolean;
   pay: string;
   role: string;
   review: string;
   date: Date;
+  overallRating: string;
+  challengeRating: string;
+}
+
+enum Month {
+  Jan,
+  Feb,
+  March,
+  April,
+  May,
+  June,
+  July,
+  August,
+  Sept,
+  Oct,
+  Nov,
+  Dec,
 }
 
 const ReviewDisplayCard = ({
   would_retake,
   pay,
   role,
-  date,
   review,
+  date,
+  overallRating,
+  challengeRating,
 }: PropsI) => {
   return (
-    <div className="bg-gray-200 w-2/5 ml-20 mt-20">
-      <div>Posted: {date.toUTCString()}</div>
-      <div className="flex space-x-2">
-        <div>Would Take Again: {would_retake ? "Yes" : "No"}</div>
-        <div>Pay: {pay}</div>
-        <div>Role: {role}</div>
+    <div className="bg-gray-100 w-3/5 mt-20 p-8">
+      <div className="relative w-1/2 left-200">
+        <div className="font-bold text-sm">{`${
+          Month[date.getMonth()]
+        } ${date.getDay()}, ${date.getFullYear()}`}</div>
       </div>
-      <div className="break-words">
-        <div>{review}</div>
+      <div className="flex">
+        <ReviewSideRatings
+          rateName1="Overall"
+          rateName2="Challenge"
+          overallRating={overallRating}
+          challengeRating={challengeRating}
+        />
+        <div className=" flex-col space-y-10 pl-20">
+          <ReviewTopInfo would_retake={would_retake} pay={pay} role={role} />
+          <div className="break-words w-3/5">
+            <div>{review}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
