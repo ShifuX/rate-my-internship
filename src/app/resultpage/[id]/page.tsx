@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import {
+  DownTest,
   NavBar,
   RatingDistribution,
   RatingView,
@@ -46,7 +47,7 @@ async function getCompany(company: string) {
 
 const ResultPage = async ({ params }: { params: { id: string } }) => {
   const company = await getCompany(params.id);
-  console.log(company);
+  //console.log(company);
   if (company == null) {
     redirect("/notfound");
   }

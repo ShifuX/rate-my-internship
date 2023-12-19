@@ -36,6 +36,7 @@ model Reviews {
   review             String
   role               String
   would_retake       Boolean
+  pdf                Bytes
   created_date       DateTime @default(now())
   company            Company  @relation(fields: [companyID], references: [name])
   companyID          String

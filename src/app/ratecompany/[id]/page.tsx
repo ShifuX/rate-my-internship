@@ -1,5 +1,6 @@
 import prisma from "../../db";
 import {
+  FileCard,
   PayCard,
   RateCard,
   RetakeCard,
@@ -25,6 +26,9 @@ const page = ({ params }: { params: { id: string } }) => {
     const role = data.get("Role")?.toString();
     const retake = data.get("checked")?.toString();
     const would_retake: boolean = retake === "1" ? true : false;
+    const pdf = data.get("pdf") as File;
+    const arrayBuffer = await pdf.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
 
     //console.log(review);
     if (
@@ -50,10 +54,11 @@ const page = ({ params }: { params: { id: string } }) => {
         review,
         role,
         would_retake,
+        pdf: Buffer.from(buffer),
       },
     });
 
-    console.log("Submitted");
+    //console.log("Submitted");
     redirect(`/resultpage/${companyName}`);
   }
 
@@ -82,6 +87,7 @@ const page = ({ params }: { params: { id: string } }) => {
         <TextCard textLabel="Role" inputID="Role" placeHolder="Role Name" />
         <RetakeCard textLabel="Would you intern here again" inputID="checked" />
         <PayCard textLabel="Your hourly pay" inputID="pay" placeHolder="0.00" />
+        <FileCard textLabel="Offer letter" inputID="pdf" />
         <ReviewCard textLabel="Write your review" inputID="review" />
         <SubmitCard />
       </form>
