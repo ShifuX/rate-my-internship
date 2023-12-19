@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import {
-  DownTest,
   NavBar,
   RatingDistribution,
   RatingView,
@@ -60,7 +59,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
         <RatingDistribution />
       </div>
 
-      <div className="pl-80 pb-6">
+      <div className="pl-80 pb-6 mt-20">
         {company.reviews.map((review) => {
           return (
             <ReviewDisplayCard

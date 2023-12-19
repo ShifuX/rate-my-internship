@@ -35,7 +35,7 @@ const ReviewDisplayCard = ({
   challengeRating,
 }: PropsI) => {
   return (
-    <div className="bg-gray-100 w-3/5 mt-20 p-8">
+    <div className="bg-gray-100 w-3/5 p-8 mt-6">
       <div className="relative w-1/2 left-200">
         <div className="font-bold text-sm">{`${
           Month[date.getMonth()]
