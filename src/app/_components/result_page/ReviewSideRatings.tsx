@@ -30,9 +30,7 @@ const ReviewSideRatings = ({
               : "bg-gray-300"
           } text-center font-bold text-3xl flex justify-center items-center`}
         >
-          {`${rating1 ? rating1 : "N/A"}${
-            !rating1 ? "" : rating1.includes(".") ? "" : ".0"
-          }`}
+          {`${!rating1 ? "0" : rating1}${rating1.includes(".") ? "" : ".0"}`}
         </div>
       </div>
       <div className="text-center w-24 text-lg pt-4">
@@ -52,9 +50,7 @@ const ReviewSideRatings = ({
               : "bg-gray-300"
           } text-center font-bold text-3xl flex justify-center items-center`}
         >
-          {`${rating2 ? rating2 : "N/A"}${
-            !rating2 ? "" : rating2.includes(".") ? "" : ".0"
-          }`}
+          {`${!rating2 ? "0" : rating2}${rating2.includes(".") ? "" : ".0"}`}
         </div>
       </div>
     </div>
