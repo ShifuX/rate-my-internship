@@ -51,47 +51,55 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
     redirect("/notfound");
   }
 
-  const totalRating = company.reviews.map((review) => review.total_rating);
-  const challengeRating = company.reviews.map(
-    (review) => review.challenge_rating
-  );
-  const learnRating = company.reviews.map((review) => review.learn_rating);
-  const funRating = company.reviews.map((review) => review.fun_rating);
-  let countWouldTakeAgain: number = 0;
+  let averageTotalRating = 0;
+  let averageChallengeRating = 0;
+  let averageLearnRating = 0;
+  let averageFunRating = 0;
+  let averageWouldTakeAgain = 0;
 
-  company.reviews.forEach((review) => {
-    if (review.would_retake) {
-      countWouldTakeAgain++;
-    }
-  });
+  if (company.reviews.length !== 0) {
+    const totalRating = company.reviews.map((review) => review.total_rating);
+    const challengeRating = company.reviews.map(
+      (review) => review.challenge_rating
+    );
+    const learnRating = company.reviews.map((review) => review.learn_rating);
+    const funRating = company.reviews.map((review) => review.fun_rating);
+    let countWouldTakeAgain: number = 0;
 
-  const averageWouldTakeAgain =
-    (countWouldTakeAgain / company.reviews.length) * 100;
+    company.reviews.forEach((review) => {
+      if (review.would_retake) {
+        countWouldTakeAgain++;
+      }
+    });
 
-  const sumTotalRating = totalRating.reduce(
-    (accumulator, currentVal) => accumulator + Number(currentVal),
-    0
-  );
+    averageWouldTakeAgain =
+      (countWouldTakeAgain / company.reviews.length) * 100;
 
-  const sumChallengeRating = challengeRating.reduce(
-    (accumulator, currentVal) => accumulator + Number(currentVal),
-    0
-  );
+    const sumTotalRating = totalRating.reduce(
+      (accumulator, currentVal) => accumulator + Number(currentVal),
+      0
+    );
 
-  const sumLearnRating = learnRating.reduce(
-    (accumulator, currentVal) => accumulator + Number(currentVal),
-    0
-  );
+    const sumChallengeRating = challengeRating.reduce(
+      (accumulator, currentVal) => accumulator + Number(currentVal),
+      0
+    );
 
-  const sumFunRating = funRating.reduce(
-    (accumulator, currentVal) => accumulator + Number(currentVal),
-    0
-  );
+    const sumLearnRating = learnRating.reduce(
+      (accumulator, currentVal) => accumulator + Number(currentVal),
+      0
+    );
 
-  const averageTotalRating = sumTotalRating / totalRating.length;
-  const averageChallengeRating = sumChallengeRating / challengeRating.length;
-  const averageLearnRating = sumLearnRating / learnRating.length;
-  const averageFunRating = sumFunRating / funRating.length;
+    const sumFunRating = funRating.reduce(
+      (accumulator, currentVal) => accumulator + Number(currentVal),
+      0
+    );
+
+    averageTotalRating = sumTotalRating / totalRating.length;
+    averageChallengeRating = sumChallengeRating / challengeRating.length;
+    averageLearnRating = sumLearnRating / learnRating.length;
+    averageFunRating = sumFunRating / funRating.length;
+  }
 
   return (
     <div>
