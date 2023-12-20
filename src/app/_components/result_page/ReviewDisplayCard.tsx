@@ -45,8 +45,8 @@ const ReviewDisplayCard = ({
         <ReviewSideRatings
           rateName1="Overall"
           rateName2="Challenge"
-          overallRating={overallRating}
-          challengeRating={challengeRating}
+          rating1={overallRating}
+          rating2={challengeRating}
         />
         <div className=" flex-col space-y-10 pl-20">
           <ReviewTopInfo would_retake={would_retake} pay={pay} role={role} />

@@ -22,9 +22,10 @@ const FileCard = ({ textLabel, inputID }: PropI) => {
     <div className="w-1/4 h-48 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
       <div className="flex p-4">
-        <div className="bg-[url('/warn-icon.png')] bg-no-repeat bg-contain h-8 w-10 mt-2"></div>
+        <div className="bg-[url('/warn-icon.png')] bg-no-repeat bg-contain h-9 w-12 mt-4"></div>
         <div className="text-sm p-2 bg-yellow-200 font-bold rounded-xl">
-          Make sure to cross out any sensitive information before submitting
+          Make sure to cross out any sensitive information before submitting, it
+          will be deleted from storage upon review
         </div>
       </div>
       <div className="pl-48 pt-5">

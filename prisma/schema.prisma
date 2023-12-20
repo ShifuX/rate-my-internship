@@ -33,7 +33,7 @@ model Reviews {
   fun_rating         Decimal
   challenge_rating   Decimal
   pay                Decimal
-  review             String
+  review             String   @db.LongText
   role               String
   would_retake       Boolean
   pdf                Bytes
