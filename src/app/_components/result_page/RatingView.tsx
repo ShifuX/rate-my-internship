@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 interface props {
   company: string | undefined;
-  logo_path: string | undefined;
+  logo_path: string;
   totalAverage: number;
   challengeAverage: number;
   wouldRetakeAverage: number;
@@ -30,7 +30,7 @@ const RatingView = ({
       <div className="text-7xl font-bold font-nunito">{totalAverage}/5</div>
       <div className="mt-12 w-72 h-44 relative">
         <Image
-          src={`${logo_path}`}
+          src={logo_path}
           alt="company logo"
           fill={true}
           className="shadow-md object-contain"

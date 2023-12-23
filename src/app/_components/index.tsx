@@ -13,3 +13,4 @@ export { default as ReviewDisplayCard } from "./result_page/ReviewDisplayCard";
 export { default as ReviewTopInfo } from "./result_page/ReviewTopInfo";
 export { default as ReviewSideRatings } from "./result_page/ReviewSideRatings";
 export { default as FileCard } from "./rating_page/FileCard";
+export { default as SlideShow } from "./home/SlideShow";

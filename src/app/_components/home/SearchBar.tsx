@@ -22,7 +22,7 @@ const SearchBar = () => {
           name="searchCompany"
           id="searchCompany"
           placeholder="Company Name"
-          className=" bg-white text-xl font-sarif text-black rounded-3xl h-12 w-96 text-center bg-no-repeat bg-contain"
+          className=" bg-white text-xl font-bold font-nunito text-white rounded-3xl h-12 w-96 text-center bg-no-repeat bg-contain focus:bg-black border-transparent focus:outline-none"
           style={{
             backgroundImage: `url('/terminal-icon.png')`,
           }}
