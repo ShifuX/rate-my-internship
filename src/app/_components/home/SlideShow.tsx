@@ -21,13 +21,17 @@ const SlideShow = ({ imgAndName }: PropsI) => {
     <div className="flex space-x-4">
       {imgAndName.map((obj) => {
         return (
-          <div className="w-72 h-40 shadow-md border-2 border-grey-100 overflow-hidden relative">
+          <div
+            className="w-72 h-40 shadow-md border-2 border-grey-100 overflow-hidden relative"
+            key={obj.name}
+          >
             <Image
               src={obj.img}
               alt="company logo"
               fill={true}
               className="shadow-md object-cover"
               onClick={() => HandleClick(obj.name)}
+              key={obj.name}
             />
           </div>
         );
