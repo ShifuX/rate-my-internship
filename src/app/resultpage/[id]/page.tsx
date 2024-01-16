@@ -48,7 +48,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
   const company = await getCompany(params.id);
   //console.log(company);
   if (company == null) {
-    redirect("/notfound");
+    redirect(`/notfound/${params.id}`);
   }
 
   let averageTotalRating = 0;

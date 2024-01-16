@@ -10,6 +10,8 @@ const SearchBar = () => {
   function SearchForCompany(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
 
+    if (searchInput.length === 0 || searchInput === "") return;
+
     //console.log(searchInput);
     router.push(`/resultpage/${searchInput.trimEnd()}`);
   }

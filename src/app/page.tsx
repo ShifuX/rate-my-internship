@@ -4,7 +4,7 @@ import prisma from "./db";
 
 async function getCompanyImages() {
   const companies = await prisma.company.findMany({
-    take: 10,
+    take: 4,
     include: {
       reviews: true,
     },
@@ -34,11 +34,11 @@ export default async function Home() {
         </div>
         <SearchBar />
       </div>
-      <div className="h-screen flex flex-col justify-center items-center ">
+      <div className="h-screen flex flex-col space-y-32 justify-center items-center ">
         <div className="h-10 text-6xl font-bold font-nunito">
           A Quick Glance
         </div>
-        <div className="pb-40">
+        <div className="pb-32">
           <SlideShow imgAndName={imageAndName} />
         </div>
       </div>
