@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
 interface PropI {
   textLabel: string | undefined;
   inputID: string | undefined;
 }
 
 const ReviewCard = ({ textLabel, inputID }: PropI) => {
+  const [text, setText] = useState("");
+
   return (
     <div className="w-2/4 h-5/6 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
@@ -16,10 +22,12 @@ const ReviewCard = ({ textLabel, inputID }: PropI) => {
             cols={30}
             rows={10}
             maxLength={350}
-            className="border-2 w-full text-md p-4"
+            className="border-2 w-full text-md p-4 resize-none"
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
       </div>
+      <div className="pb-5 ml-208">{text.length}/350</div>
     </div>
   );
 };
