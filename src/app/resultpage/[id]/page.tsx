@@ -3,30 +3,9 @@ import {
   NavBar,
   RatingDistribution,
   RatingView,
-  ReviewDisplayCard,
+  RoleSelector,
 } from "../../_components";
-
 import prisma from "../../db";
-
-// interface CompanyI {
-//   id: string | undefined;
-//   name: string | undefined;
-//   logo_path: string | undefined;
-//   reviews:
-//     | [
-//         {
-//           id: string;
-//           total_rating: string;
-//           learn_rating: string;
-//           challenge_rating: string;
-//           pay: number;
-//           role: string;
-//           would_retake: boolean;
-//           created_date: Date;
-//         }
-//       ]
-//     | undefined;
-// }
 
 async function getCompany(company: string) {
   // logic to get company from db
@@ -50,6 +29,8 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
   if (company == null) {
     redirect(`/notfound/${params.id}`);
   }
+
+  const roles = company.reviews.map((review) => review.role);
 
   let averageTotalRating = 0;
   let averageChallengeRating = 0;
@@ -121,20 +102,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
       </div>
 
       <div className="pl-80 pb-6 mt-20">
-        {company.reviews.map((review) => {
-          return (
-            <ReviewDisplayCard
-              would_retake={review.would_retake}
-              pay={review.pay.toDecimalPlaces(2).toString()}
-              role={review.role}
-              date={review.created_date}
-              review={review.review}
-              overallRating={review.total_rating.toString()}
-              challengeRating={review.challenge_rating.toString()}
-              key={review.id}
-            />
-          );
-        })}
+        <RoleSelector roles={roles} reviews={company.reviews} />
       </div>
     </div>
   );
