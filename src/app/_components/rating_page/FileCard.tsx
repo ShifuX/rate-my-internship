@@ -19,7 +19,7 @@ const FileCard = ({ textLabel, inputID }: PropI) => {
   }
 
   return (
-    <div className="w-1/4 h-48 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 h-48 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
       <div className="flex p-4">
         <div className="bg-[url('/warn-icon.png')] bg-no-repeat bg-contain h-9 w-12 mt-4"></div>
@@ -28,7 +28,7 @@ const FileCard = ({ textLabel, inputID }: PropI) => {
           will be deleted from storage upon review
         </div>
       </div>
-      <div className="pl-48 pt-5">
+      <div className="pl-72 pt-5">
         <input
           type="file"
           name={inputID}

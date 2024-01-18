@@ -6,9 +6,9 @@ interface PropI {
 
 const PayCard = ({ textLabel, inputID, placeHolder }: PropI) => {
   return (
-    <div className="w-1/4 h-32 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 h-32 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
-      <div className="pl-48 pt-8">
+      <div className="pl-72 pt-8">
         <input
           type="number"
           name={inputID}

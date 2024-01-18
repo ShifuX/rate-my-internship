@@ -84,8 +84,12 @@ const page = ({ params }: { params: { id: string } }) => {
           labelName="Rate how challenging the internship was"
           inputID="rateBoxChallenge"
         />
-        <TextCard textLabel="Role" inputID="Role" placeHolder="Role Name" />
         <RetakeCard textLabel="Would you intern here again" inputID="checked" />
+        <TextCard
+          textLabel="Role (Make sure the name matches your offer letter)"
+          inputID="Role"
+          placeHolder="Role Name"
+        />
         <PayCard textLabel="Your hourly pay" inputID="pay" placeHolder="0.00" />
         <FileCard textLabel="Offer letter" inputID="pdf" />
         <ReviewCard textLabel="Write your review" inputID="review" />
