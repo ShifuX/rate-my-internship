@@ -13,9 +13,9 @@ const RateCard = ({ labelName, inputID }: PropsI) => {
   const [selectedMssg, setSelectedMssg] = useState("");
 
   return (
-    <div className="w-1/4 h-32 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 h-32 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{labelName}:</div>
-      <div className="pl-48 pt-8 flex space-x-2">
+      <div className="pl-72 pt-8 flex space-x-2">
         <div
           className={`group-focus w-10 h-10 hover:bg-red-300 border-2 rounded-3xl ${
             selectedRating === 1 ? "bg-red-500" : "bg-transparent"
