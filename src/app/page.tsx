@@ -32,7 +32,9 @@ export default async function Home() {
             className=""
           />
         </div>
-        <SearchBar />
+        <div className=" flex justify-center">
+          <SearchBar location="home" />
+        </div>
       </div>
       <div className="h-screen flex flex-col space-y-32 justify-center items-center ">
         <div className="h-10 text-6xl font-bold font-nunito">
