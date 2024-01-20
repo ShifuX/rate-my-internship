@@ -28,7 +28,7 @@ const RatingView = ({
   return (
     <div className=" w-64">
       <div className="text-7xl font-bold font-nunito">
-        {totalAverage.toFixed(1)}/5
+        {totalAverage.toFixed(0)}/5
       </div>
       <div className="mt-12 w-72 h-44 relative">
         <Image
