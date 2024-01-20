@@ -23,6 +23,23 @@ async function getCompany(company: string) {
   });
 }
 
+function RemoveDuplicateRoles(roles: Array<string>): Array<string> {
+  let map = new Map<string, string>();
+  let cleanRoles: Array<string> = [];
+
+  roles.forEach((role) => {
+    if (!map.has(role)) {
+      map.set(role, role);
+    }
+  });
+
+  map.forEach((val, key) => {
+    cleanRoles.push(val);
+  });
+
+  return cleanRoles;
+}
+
 const ResultPage = async ({ params }: { params: { id: string } }) => {
   const company = await getCompany(params.id);
   //console.log(company);
@@ -30,7 +47,8 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
     redirect(`/notfound/${params.id}`);
   }
 
-  const roles = company.reviews.map((review) => review.role);
+  let roles = company.reviews.map((review) => review.role);
+  roles = RemoveDuplicateRoles(roles);
 
   let averageTotalRating = 0;
   let averageChallengeRating = 0;
