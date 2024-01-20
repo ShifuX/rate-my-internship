@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Rate My Internship",
   description:
-    "Find software related internship ratings for hundreds of companies submitted by people just like you!",
+    "RateMyInternship is the place to find internship ratings from hundreds of companies submitted by people just like you!",
 };
 
 export default async function RootLayout({
