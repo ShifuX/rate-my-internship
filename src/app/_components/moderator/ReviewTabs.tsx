@@ -16,9 +16,10 @@ interface ReviewsI {
   would_retake: boolean;
   created_date: Date;
   pdf: Buffer;
+  companyId: string;
 }
 
-async function ReviewedAction(id: string) {
+async function ReviewedAction(id: string, companyId: string) {
   "use server";
 
   await prisma.reviews.update({
@@ -27,6 +28,17 @@ async function ReviewedAction(id: string) {
     },
     data: {
       moderator_reviewed: true,
+    },
+  });
+
+  await prisma.company.update({
+    where: {
+      name: companyId,
+    },
+    data: {
+      review_count: {
+        increment: 1,
+      },
     },
   });
 
@@ -61,6 +73,7 @@ const ReviewTabs = ({
   would_retake,
   created_date,
   pdf,
+  companyId,
 }: ReviewsI) => {
   return (
     <div className="w-full h-52 bg-gray-100">
@@ -99,6 +112,7 @@ const ReviewTabs = ({
           ReviewedAction={ReviewedAction}
           DeleteAction={DeletedAction}
           id={id}
+          companyId={companyId}
           key={id}
         />
       </div>

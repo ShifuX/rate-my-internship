@@ -2,12 +2,19 @@
 
 interface PDFI {
   pdf: Buffer;
-  ReviewedAction: (id: string) => void;
+  ReviewedAction: (id: string, companyId: string) => void;
   DeleteAction: (id: string) => void;
   id: string;
+  companyId: string;
 }
 
-const DownTest = ({ pdf, ReviewedAction, DeleteAction, id }: PDFI) => {
+const DownTest = ({
+  pdf,
+  ReviewedAction,
+  DeleteAction,
+  id,
+  companyId,
+}: PDFI) => {
   function download() {
     const buf = pdf;
     if (!buf) return;
@@ -31,7 +38,7 @@ const DownTest = ({ pdf, ReviewedAction, DeleteAction, id }: PDFI) => {
       </button>
       <button
         className="bg-blue-200 rounded-3xl w-32 h-10 p-2 hover:bg-blue-400"
-        onClick={() => ReviewedAction(id)}
+        onClick={() => ReviewedAction(id, companyId)}
       >
         Reviewed
       </button>

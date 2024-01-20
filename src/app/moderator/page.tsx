@@ -41,6 +41,7 @@ const page = async () => {
               would_retake={review.would_retake}
               created_date={review.created_date}
               pdf={review.pdf}
+              companyId={review.companyID}
               key={review.id}
             />
           );
