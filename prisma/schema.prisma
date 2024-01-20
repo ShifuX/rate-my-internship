@@ -13,6 +13,7 @@ model Company {
   name         String    @unique
   logo_path    String
   created_date DateTime  @default(now())
+  review_count Int       @default(0)
   reviews      Reviews[]
 }
 
@@ -22,6 +23,14 @@ model User {
   first_name String
   last_name  String
   email      String
+  password   String
+}
+
+model Moderator {
+  id         String @id @default(uuid())
+  first_name String
+  last_name  String
+  username   String @unique
   password   String
 }
 

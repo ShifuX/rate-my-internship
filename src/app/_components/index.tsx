@@ -16,3 +16,4 @@ export { default as FileCard } from "./rating_page/FileCard";
 export { default as SlideShow } from "./home/SlideShow";
 export { default as RoleSelector } from "./result_page/RoleSelector";
 export { default as ReviewList } from "./result_page/ReviewList";
+export { default as SignOut } from "./moderator/SignOut";
