@@ -11,9 +11,18 @@ const ReviewCard = ({ textLabel, inputID }: PropI) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="w-2/5 h-96 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 h-116 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
-      <div className="w-full text-center pt-10">Guidlines go here</div>
+      <div className="w-full mt-10 p-4 bg-gray-200 flex-col flex justify-center items-center">
+        <h3 className="text-lg font-bold">Guidelines</h3>
+        <ul className="list-disc text-sm">
+          <li>Your rating must not use any profanity or inappropiate words.</li>
+          <li>
+            Look over your rating to make sure everything is filled out
+            correctly.
+          </li>
+        </ul>
+      </div>
       <div className="pt-26">
         <div className="w-full flex justify-center content-center p-9">
           <textarea

@@ -13,7 +13,7 @@ const TextCard = async ({ textLabel, inputID, placeHolder }: PropI) => {
           type="text"
           name={inputID}
           placeholder={placeHolder}
-          className="w-52 h-12 rounded-3xl border-2 text-center"
+          className="w-72 h-12 rounded-3xl border-2 text-center text-md"
           required
         />
       </div>
