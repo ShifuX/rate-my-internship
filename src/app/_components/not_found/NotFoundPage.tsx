@@ -15,7 +15,7 @@ const NotFoundPage = ({ searchInput }: NotFoundI) => {
   return (
     <div>
       <div className="pl-28 pt-8">
-        <h1 className=" text-6xl">Oops... "{searchInput}" Not Found</h1>
+        <h1 className=" text-6xl">Oops... {`"${searchInput}"`} Not Found</h1>
         <p className="pt-8 text-lg">
           To request the company to be added, please click on the button below.
         </p>
