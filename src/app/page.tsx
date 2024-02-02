@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SearchBar, SlideShow } from "./_components";
+import { Logo, SearchBar, SlideShow } from "./_components";
 import prisma from "./db";
 
 async function getCompanyImages() {
@@ -20,8 +20,11 @@ export default async function Home() {
 
   return (
     <>
-      <div className="h-screen text-center pt-96">
-        <div className="text-3xl text-center font-bold text-white pb-20">
+      <div className="relative w-32 h-16 ml-10 mt-4">
+        <Logo />
+      </div>
+      <div className="h-screen text-center pt-72">
+        <div className="text-3xl text-center font-bold text-white pb-20 pt-8">
           <h2>Enter your company to get started</h2>
         </div>
         <div className="w-full h-128 absolute -z-10 top-52">
