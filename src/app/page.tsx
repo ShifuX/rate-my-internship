@@ -29,7 +29,7 @@ export default async function Home() {
         </div>
         <div className="w-full h-128 absolute -z-10 top-52">
           <Image
-            src="/home-pic.JPG"
+            src="/bg-option01.jpg"
             alt="home page image"
             fill={true}
             className=""

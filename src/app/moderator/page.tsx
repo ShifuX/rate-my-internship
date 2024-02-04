@@ -1,3 +1,5 @@
+// Still needs to be able to take in an image to store it and auto add it to the company logo
+
 import { redirect } from "next/navigation";
 import ReviewTabs from "../_components/moderator/ReviewTabs";
 import prisma from "../db";
