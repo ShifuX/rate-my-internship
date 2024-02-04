@@ -97,7 +97,7 @@ const page = async () => {
       {requests.length > 0 ? (
         requests.map((request) => {
           return (
-            <div className="pb-5">
+            <div className="pb-5" key={request.id}>
               <RequestsCard
                 name={request.name}
                 count={request.count}
