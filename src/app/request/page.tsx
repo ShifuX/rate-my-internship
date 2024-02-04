@@ -24,7 +24,7 @@ async function createCompanyRequest(data: FormData) {
 
   // if exist update the count, else create the record
   if (exist) {
-    const updatedRecord = await prisma.companyAddRequest.update({
+    await prisma.companyAddRequest.update({
       where: {
         name: companyName,
       },
@@ -34,28 +34,6 @@ async function createCompanyRequest(data: FormData) {
         },
       },
     });
-
-    // Will remove this since cant dynamically know the logo path or keep it and add pics manually later...
-    // Adds a company if more than 10 request are submitted
-    if (updatedRecord.count > 10) {
-      // create company
-      await prisma.company.create({
-        data: {
-          name: companyName,
-          logo_path: "/comming-soon.jpg",
-        },
-      });
-
-      // update request record
-      await prisma.companyAddRequest.update({
-        where: {
-          name: companyName,
-        },
-        data: {
-          added: true,
-        },
-      });
-    }
   } else {
     await prisma.companyAddRequest.create({
       data: {
