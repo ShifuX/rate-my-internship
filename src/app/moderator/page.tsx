@@ -3,11 +3,52 @@ import ReviewTabs from "../_components/moderator/ReviewTabs";
 import prisma from "../db";
 import { getServerSession } from "next-auth";
 import { SignOut } from "../_components";
+import RequestsCard from "../_components/moderator/RequestsCard";
+
+// interface RequestsI {
+//   id: string;
+//   name: string;
+//   count: number;
+//   added: boolean;
+//   created_date: Date;
+// }
+// [];
 
 async function getReviews() {
   return await prisma.reviews.findMany({
     where: {
       moderator_reviewed: false,
+    },
+  });
+}
+
+async function getRequest() {
+  return await prisma.companyAddRequest.findMany({
+    where: {
+      added: false,
+    },
+  });
+}
+
+async function AddRequest(name: string) {
+  "use server";
+  const companyAdded = await prisma.company.create({
+    data: {
+      name: name,
+      logo_path: "/comming-soon.jpg",
+    },
+  });
+
+  if (!companyAdded) {
+    return;
+  }
+
+  await prisma.companyAddRequest.update({
+    where: {
+      name: name,
+    },
+    data: {
+      added: true,
     },
   });
 }
@@ -20,11 +61,13 @@ const page = async () => {
   }
 
   const reviews = await getReviews();
+  const requests = await getRequest();
   return (
     <div className="p-40">
       <div>
         <SignOut />
       </div>
+
       {reviews.length > 0 ? (
         reviews.map((review) => {
           return (
@@ -49,6 +92,25 @@ const page = async () => {
       ) : (
         <div className="flex justify-center items-center">
           No reviews available
+        </div>
+      )}
+      {requests.length > 0 ? (
+        requests.map((request) => {
+          return (
+            <div className="pb-5">
+              <RequestsCard
+                name={request.name}
+                count={request.count}
+                date={request.created_date}
+                AddRequest={AddRequest}
+                key={request.id}
+              />
+            </div>
+          );
+        })
+      ) : (
+        <div className="flex justify-center items-center">
+          No requests available
         </div>
       )}
     </div>

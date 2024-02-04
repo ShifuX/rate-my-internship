@@ -18,3 +18,4 @@ export { default as RoleSelector } from "./result_page/RoleSelector";
 export { default as ReviewList } from "./result_page/ReviewList";
 export { default as SignOut } from "./moderator/SignOut";
 export { default as Logo } from "./home/Logo";
+export { default as RequestsCard } from "./moderator/RequestsCard";
