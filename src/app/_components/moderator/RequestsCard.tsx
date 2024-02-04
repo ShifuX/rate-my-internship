@@ -6,9 +6,16 @@ interface RequestCardI {
   count: number;
   date: Date;
   AddRequest: (name: string) => void;
+  DeleteRequest: (name: string) => void;
 }
 
-const RequestsCard = ({ name, count, date, AddRequest }: RequestCardI) => {
+const RequestsCard = ({
+  name,
+  count,
+  date,
+  AddRequest,
+  DeleteRequest,
+}: RequestCardI) => {
   return (
     <div className="bg-gray-200 shadow-xl">
       <div className="flex space-x-6">
@@ -18,7 +25,10 @@ const RequestsCard = ({ name, count, date, AddRequest }: RequestCardI) => {
           Date: {`${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`}
         </div>
         <div>
-          <AddButton AddRequest={AddRequest} name={name} />
+          <AddButton Request={AddRequest} name={name} type="Add" />
+        </div>
+        <div>
+          <AddButton Request={DeleteRequest} name={name} type="Delete" />
         </div>
       </div>
     </div>

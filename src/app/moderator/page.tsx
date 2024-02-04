@@ -51,6 +51,17 @@ async function AddRequest(name: string) {
       added: true,
     },
   });
+  redirect("/moderator");
+}
+
+async function DeleteRequest(name: string) {
+  "use server";
+  await prisma.companyAddRequest.delete({
+    where: {
+      name: name,
+    },
+  });
+  redirect("/moderator");
 }
 
 const page = async () => {
@@ -103,6 +114,7 @@ const page = async () => {
                 count={request.count}
                 date={request.created_date}
                 AddRequest={AddRequest}
+                DeleteRequest={DeleteRequest}
                 key={request.id}
               />
             </div>
