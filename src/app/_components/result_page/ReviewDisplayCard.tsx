@@ -36,7 +36,7 @@ const ReviewDisplayCard = ({
 }: PropsI) => {
   return (
     <div className="bg-gray-100 w-3/5 p-8 mt-6">
-      <div className="relative w-1/2 left-200">
+      <div className="relative w-full flex flex-row-reverse">
         <div className="font-bold text-sm">{`${
           Month[date.getMonth()]
         } ${date.getDay()}, ${date.getFullYear()}`}</div>
