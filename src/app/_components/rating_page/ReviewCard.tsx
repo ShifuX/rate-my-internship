@@ -36,7 +36,7 @@ const ReviewCard = ({ textLabel, inputID }: PropI) => {
           />
         </div>
       </div>
-      <div className=" -mt-4 ml-160">{text.length}/350</div>
+      <div className="flex flex-row-reverse laptop:pr-5">{text.length}/350</div>
     </div>
   );
 };
