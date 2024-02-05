@@ -23,6 +23,11 @@ const config: Config = {
         "200": "50rem",
         "208": "52rem",
       },
+      screens: {
+        desktop2k: "1990px",
+        desktop1080: "1700px",
+        laptop: "1100px",
+      },
     },
   },
   plugins: [],

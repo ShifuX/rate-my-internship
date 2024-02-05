@@ -103,7 +103,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
   return (
     <div>
       <NavBar />
-      <div className="grid grid-cols-2 pl-80 pt-20 w-3/5">
+      <div className="grid grid-cols-2 desktop2k:gap-x-48 desktop1080:gap-x-40 laptop:gap-x-108 pl-80 laptop:pl-32 pt-20 w-3/5">
         <RatingView
           company={company?.name}
           logo_path={company?.logo_path}
@@ -119,7 +119,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
         />
       </div>
 
-      <div className="pl-80 pb-6 mt-20">
+      <div className="pl-80 laptop:pl-32 pb-6 mt-20">
         <RoleSelector roles={roles} reviews={company.reviews} />
       </div>
     </div>
