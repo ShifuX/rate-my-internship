@@ -24,10 +24,10 @@ export default async function Home() {
         <Logo />
       </div>
       <div className="h-screen text-center pt-72">
-        <div className="text-3xl text-center font-bold text-white pb-20 pt-8">
+        <div className="text-3xl desktop2k:text-5xl text-center font-bold text-white pb-20 desktop2k:pt-24 pt-8">
           <h2>Enter your company to get started</h2>
         </div>
-        <div className="w-full h-128 absolute -z-10 top-52">
+        <div className="w-full desktop2k:h-192 h-128 absolute -z-10 top-52">
           <Image
             src="/bg-option01.jpg"
             alt="home page image"

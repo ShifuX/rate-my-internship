@@ -11,7 +11,7 @@ const SearchBar = ({ location }: SearchBarI) => {
   const router = useRouter();
   const NAVBARSIZE =
     location === "home"
-      ? "text-xl rounded-3xl h-12 w-96"
+      ? "text-xl rounded-3xl h-12 w-96 desktop2k:w-108"
       : "text-lg rounded-3xl h-10 w-96";
   let [searchInput, setSearchInput] = useState("");
 
