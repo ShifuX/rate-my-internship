@@ -11,6 +11,16 @@ export const metadata: Metadata = {
   title: "Rate My Internship",
   description:
     "RateMyInternship is the place to find internship ratings from hundreds of companies submitted by people just like you!",
+  applicationName: "Rate My Internship",
+  keywords: [
+    "Rate My Internship",
+    "RateMyInternship",
+    "rate my internship",
+    "ratemyinternship",
+    "rate internship",
+    "internship",
+    "internship review",
+  ],
 };
 
 export default async function RootLayout({
