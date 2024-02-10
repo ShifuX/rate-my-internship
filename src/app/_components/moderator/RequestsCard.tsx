@@ -1,4 +1,4 @@
-import prisma from "../../db";
+// Add a file upload and pass file data to AddRequest function
 import AddButton from "./AddButton";
 
 interface RequestCardI {

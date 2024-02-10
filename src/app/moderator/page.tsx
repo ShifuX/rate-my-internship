@@ -34,6 +34,10 @@ async function getRequest() {
 
 async function AddRequest(name: string) {
   "use server";
+  // this function needs to get the file data which will be the image
+  // store in S3 bucket first and get the URL for the image
+  // pass the url to the logo_path
+
   const companyAdded = await prisma.company.create({
     data: {
       name: name,
