@@ -6,6 +6,7 @@ import prisma from "../db";
 import { getServerSession } from "next-auth";
 import { SignOut } from "../_components";
 import RequestsCard from "../_components/moderator/RequestsCard";
+import { GenerateUploadURL } from "@/s3";
 
 // interface RequestsI {
 //   id: string;
@@ -15,6 +16,11 @@ import RequestsCard from "../_components/moderator/RequestsCard";
 //   created_date: Date;
 // }
 // [];
+
+interface AddReqI {
+  name: string;
+  file: File;
+}
 
 async function getReviews() {
   return await prisma.reviews.findMany({
@@ -32,11 +38,26 @@ async function getRequest() {
   });
 }
 
-async function AddRequest(name: string) {
+async function AddRequest({ name, file }: AddReqI) {
   "use server";
-  // this function needs to get the file data which will be the image
+
+  if (file.name === "filename") return;
+
   // store in S3 bucket first and get the URL for the image
   // pass the url to the logo_path
+
+  const secureURL = await GenerateUploadURL();
+
+  await fetch(secureURL, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: file,
+  });
+
+  const imageURL = secureURL.split("?")[0];
+  console.log(imageURL);
 
   const companyAdded = await prisma.company.create({
     data: {
@@ -67,6 +88,67 @@ async function DeleteRequest(name: string) {
       name: name,
     },
   });
+  redirect("/moderator");
+}
+
+async function HandleForm(data: FormData) {
+  "use server";
+
+  const file = data.get("logoFile") as File;
+  const option = data.get("addOrDeleteOption")?.toString();
+  const name = data.get("companyName")?.toString();
+
+  if (file.name === "filename") return;
+
+  if (!name || !option) return;
+
+  // store in S3 bucket first and get the URL for the image
+  // pass the url to the logo_path
+
+  // Add
+  if (option === "1") {
+    const secureURL = await GenerateUploadURL();
+
+    await fetch(secureURL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: file,
+    });
+
+    const imageURL = secureURL.split("?")[0];
+    console.log(imageURL);
+
+    const companyAdded = await prisma.company.create({
+      data: {
+        name: name,
+        logo_path: imageURL.toString(),
+      },
+    });
+
+    if (!companyAdded) {
+      return;
+    }
+
+    await prisma.companyAddRequest.update({
+      where: {
+        name: name,
+      },
+      data: {
+        added: true,
+      },
+    });
+  }
+
+  if (option === "0") {
+    await prisma.companyAddRequest.delete({
+      where: {
+        name: name,
+      },
+    });
+  }
+
   redirect("/moderator");
 }
 
@@ -114,16 +196,14 @@ const page = async () => {
       {requests.length > 0 ? (
         requests.map((request) => {
           return (
-            <div className="pb-5" key={request.id}>
+            <form action={HandleForm} className="pb-5" key={request.id}>
               <RequestsCard
                 name={request.name}
                 count={request.count}
                 date={request.created_date}
-                AddRequest={AddRequest}
-                DeleteRequest={DeleteRequest}
                 key={request.id}
               />
-            </div>
+            </form>
           );
         })
       ) : (
