@@ -69,6 +69,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
           {filteredNames?.map((company) => {
             return (
               <li
+                key={company}
                 className="hover:bg-gray-200 p-2 text-lg font-bold"
                 onClick={() => HandleDropDownChange(company)}
               >
