@@ -65,7 +65,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
         value={searchInput}
       />
       {filteredNames != null ? (
-        <ul className="bg-white rounded-md">
+        <ul className="bg-white rounded-md max-h-40 overflow-scroll">
           {filteredNames?.map((company) => {
             return (
               <li

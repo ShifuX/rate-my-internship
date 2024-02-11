@@ -1,6 +1,19 @@
 import { Logo, SearchBar } from "..";
+import prisma from "../../db";
 
-const NavBar = () => {
+async function GetCompanies() {
+  const companies = await prisma.company.findMany({
+    select: {
+      name: true,
+    },
+  });
+
+  return companies.map((company) => company.name);
+}
+
+const NavBar = async () => {
+  const companyNames = await GetCompanies();
+
   return (
     <div className="bg-black w-screen h-16">
       <div className="pl-10 pt-3 flex space-x-6">
@@ -8,7 +21,7 @@ const NavBar = () => {
           <Logo />
         </div>
         <div className=" text-white text-3xl font-bold">Company</div>
-        <SearchBar location="nav" />
+        <SearchBar location="nav" companyNames={companyNames} />
       </div>
     </div>
   );
