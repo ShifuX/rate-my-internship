@@ -12,7 +12,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
   const router = useRouter();
   const NAVBARSIZE =
     location === "home"
-      ? "text-xl rounded-3xl h-12 w-96 desktop2k:w-108"
+      ? "text-xl rounded-3xl h-12 w-96 desktop2k:w-108 desktop1080:w-96 laptop:w-96 phone:w-4/5"
       : "text-lg rounded-3xl h-10 w-96";
   let [searchInput, setSearchInput] = useState("");
   let [filteredNames, setFilteredNames] = useState<string[]>();
@@ -37,6 +37,8 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
   }
 
   function FilterCompanyNames() {
+    if (searchInput.length < 1) return;
+
     const filtered = companyNames.filter((company) =>
       company.toLowerCase().includes(searchInput.toLowerCase())
     );
@@ -51,13 +53,13 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
   }
 
   return (
-    <form onSubmit={SearchForCompany}>
+    <form onSubmit={SearchForCompany} autoComplete="off">
       <input
         type="search"
         name="searchCompany"
         id="searchCompany"
         placeholder="Company Name"
-        autoComplete="false"
+        autoComplete="off"
         className={`bg-white ${NAVBARSIZE} font-bold font-nunito bg-origin-content p-2 text-center bg-no-repeat bg-contain border-transparent focus:outline-none`}
         style={{
           backgroundImage: `url('/building-icon.png')`,
@@ -66,7 +68,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
         value={searchInput}
       />
       {filteredNames != null ? (
-        <ul className="bg-white rounded-md max-h-40 overflow-scroll">
+        <ul className="bg-white rounded-md max-h-40 overflow-y-scroll">
           {filteredNames?.map((company) => {
             return (
               <li

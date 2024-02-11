@@ -28,6 +28,7 @@ const config: Config = {
         desktop1080: "1700px",
         laptop: "1100px",
         tablet: "700px",
+        phone: "300px",
       },
     },
   },

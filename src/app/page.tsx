@@ -51,7 +51,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="h-screen flex flex-col space-y-32 justify-center items-center ">
-        <div className="h-10 text-6xl font-bold font-nunito">
+        <div className="h-10 text-6xl desktop2k:text-6xl desktop1080:text-6xl laptop:text-6xl tablet:text-6xl phone:text-4xl font-bold font-nunito">
           A Quick Glance
         </div>
         <div className="pb-32">
