@@ -40,7 +40,6 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
     const filtered = companyNames.filter((company) =>
       company.toLowerCase().includes(searchInput.toLowerCase())
     );
-    console.log(filtered);
 
     setFilteredNames(filtered);
   }
