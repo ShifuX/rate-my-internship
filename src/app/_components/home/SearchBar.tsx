@@ -1,19 +1,21 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface SearchBarI {
   location: string;
+  companyNames: string[];
 }
 
-const SearchBar = ({ location }: SearchBarI) => {
+const SearchBar = ({ location, companyNames }: SearchBarI) => {
   const router = useRouter();
   const NAVBARSIZE =
     location === "home"
       ? "text-xl rounded-3xl h-12 w-96 desktop2k:w-108"
       : "text-lg rounded-3xl h-10 w-96";
   let [searchInput, setSearchInput] = useState("");
+  let [filteredNames, setFilteredNames] = useState<string[]>();
 
   function SearchForCompany(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -21,6 +23,32 @@ const SearchBar = ({ location }: SearchBarI) => {
     if (searchInput.length === 0 || searchInput === "") return;
 
     router.push(`/resultpage/${searchInput.trimEnd()}`);
+  }
+
+  function HandleChange(e: ChangeEvent<HTMLInputElement>) {
+    setSearchInput(e.target.value);
+
+    if (e.target.value === "") {
+      setFilteredNames([]);
+      return;
+    }
+
+    FilterCompanyNames();
+  }
+
+  function FilterCompanyNames() {
+    const filtered = companyNames.filter((company) =>
+      company.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    console.log(filtered);
+
+    setFilteredNames(filtered);
+  }
+
+  function HandleDropDownChange(company: string) {
+    setSearchInput(company);
+    setFilteredNames([]);
+    document.getElementById("searchCompany")?.focus();
   }
 
   return (
@@ -34,9 +62,23 @@ const SearchBar = ({ location }: SearchBarI) => {
         style={{
           backgroundImage: `url('/building-icon.png')`,
         }}
-        onChange={(e) => setSearchInput(e.currentTarget.value)}
+        onChange={HandleChange}
         value={searchInput}
       />
+      {filteredNames != null ? (
+        <ul className="bg-white rounded-md">
+          {filteredNames?.map((company) => {
+            return (
+              <li
+                className="hover:bg-gray-200 p-2 text-lg font-bold"
+                onClick={() => HandleDropDownChange(company)}
+              >
+                {company}
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
     </form>
   );
 };

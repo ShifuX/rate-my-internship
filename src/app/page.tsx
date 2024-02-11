@@ -15,8 +15,19 @@ async function getCompanyImages() {
   });
 }
 
+async function GetCompanies() {
+  const companies = await prisma.company.findMany({
+    select: {
+      name: true,
+    },
+  });
+
+  return companies.map((company) => company.name);
+}
+
 export default async function Home() {
   const imageAndName = await getCompanyImages();
+  const companyNames = await GetCompanies();
 
   return (
     <>
@@ -36,7 +47,7 @@ export default async function Home() {
           />
         </div>
         <div className=" flex justify-center">
-          <SearchBar location="home" />
+          <SearchBar location="home" companyNames={companyNames} />
         </div>
       </div>
       <div className="h-screen flex flex-col space-y-32 justify-center items-center ">
