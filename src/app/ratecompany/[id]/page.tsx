@@ -1,6 +1,7 @@
 import prisma from "../../db";
 import {
   FileCard,
+  NavBar,
   PayCard,
   RateCard,
   RetakeCard,
@@ -64,9 +65,10 @@ const page = ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="h-screen">
+      <NavBar />
       <form
         action={addReview}
-        className="w-full flex flex-col space-y-8 pt-44 justify-center content-center items-center pb-20"
+        className="w-full flex flex-col space-y-8 pt-20 justify-center content-center items-center pb-20"
       >
         <RateCard
           labelName="Overall internship rating"
