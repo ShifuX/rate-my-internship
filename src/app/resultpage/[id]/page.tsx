@@ -105,7 +105,10 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
   return (
     <div>
       <NavBar />
-      <div className="grid grid-cols-2 desktop2k:gap-x-48 desktop1080:gap-x-40 laptop:gap-x-108 tablet:gap-x-80 pl-80 laptop:pl-32 tablet:pl-10 pt-20 w-3/5">
+      <div
+        className="grid grid-cols-2 desktop2k:grid-cols-2 desktop1080:grid-cols-2 laptop:grid-cols-2 tablet:grid-cols-2  phone:grid-cols-1 desktop2k:gap-x-48 desktop1080:gap-x-40 laptop:gap-x-108 
+      tablet:gap-x-80 phone:gap-x-0 phone:gap-y-16 pl-80 laptop:pl-32 tablet:pl-10 phone:pl-5 pt-20 w-3/5"
+      >
         <RatingView
           company={company?.name}
           logo_path={company?.logo_path}
@@ -121,7 +124,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
         />
       </div>
 
-      <div className="pl-80 laptop:pl-32 tablet:pl-10 pb-6 mt-20">
+      <div className="pl-80 laptop:pl-32 tablet:pl-10 phone:pl-5 pb-6 mt-20">
         <RoleSelector roles={roles} reviews={company.reviews} />
       </div>
     </div>

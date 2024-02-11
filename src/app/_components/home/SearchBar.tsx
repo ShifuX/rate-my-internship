@@ -13,7 +13,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
   const NAVBARSIZE =
     location === "home"
       ? "text-xl rounded-3xl h-12 w-96 desktop2k:w-108 desktop1080:w-96 laptop:w-96 phone:w-4/5"
-      : "text-lg rounded-3xl h-10 w-96";
+      : "text-lg rounded-3xl h-10 w-96 desktop2k:w-96 desktop1080:w-96 laptop:w-96 phone:w-4/5";
   let [searchInput, setSearchInput] = useState("");
   let [filteredNames, setFilteredNames] = useState<string[]>();
 
