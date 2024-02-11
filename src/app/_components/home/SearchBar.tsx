@@ -57,6 +57,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
         name="searchCompany"
         id="searchCompany"
         placeholder="Company Name"
+        autoComplete="false"
         className={`bg-white ${NAVBARSIZE} font-bold font-nunito bg-origin-content p-2 text-center bg-no-repeat bg-contain border-transparent focus:outline-none`}
         style={{
           backgroundImage: `url('/building-icon.png')`,
