@@ -11,7 +11,7 @@ const ReviewCard = ({ textLabel, inputID }: PropI) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="w-2/5 h-116 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 desktop2k:w-2/5 desktop1080:w-2/5 laptop:w-2/5 tablet:w-3/5 h-116 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
       <div className="w-full mt-10 p-4 bg-gray-200 flex-col flex justify-center items-center">
         <h3 className="text-lg font-bold">Guidelines</h3>

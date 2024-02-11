@@ -19,7 +19,7 @@ const FileCard = ({ textLabel, inputID }: PropI) => {
   }
 
   return (
-    <div className="w-2/5 h-48 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 desktop2k:w-2/5 desktop1080:w-2/5 laptop:w-2/5 tablet:w-3/5 h-48 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
       <div className="flex p-4">
         <div className="bg-[url('/warn-icon.png')] bg-no-repeat bg-contain h-9 w-12 mt-4"></div>

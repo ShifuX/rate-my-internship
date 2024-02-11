@@ -6,9 +6,9 @@ interface PropI {
 
 const TextCard = async ({ textLabel, inputID, placeHolder }: PropI) => {
   return (
-    <div className="w-2/5 h-32 shadow-md border-2 border-grey-100 ">
+    <div className="w-2/5 desktop2k:w-2/5 desktop1080:w-2/5 laptop:w-2/5 tablet:w-3/5 h-32 shadow-md border-2 border-grey-100 ">
       <div className="font-bold pl-2">{textLabel}:</div>
-      <div className="pl-72 tablet:pl-10 pt-8">
+      <div className="pl-72 desktop2k:pl-72 desktop1080:pl-72 laptop:pl-72 tablet:pl-10 pt-8">
         <input
           type="text"
           name={inputID}
