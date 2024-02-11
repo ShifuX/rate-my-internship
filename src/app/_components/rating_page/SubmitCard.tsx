@@ -1,6 +1,6 @@
 const SubmitCard = () => {
   return (
-    <div className="w-2/5 h-32 shadow-md border-2 border-grey-100 flex justify-center items-center">
+    <div className="desktop2k:w-2/5 desktop1080:w-2/5 laptop:w-2/5 tablet:w-3/5 h-32 shadow-md border-2 border-grey-100 flex justify-center items-center">
       <div className="text-center">
         <input
           type="submit"

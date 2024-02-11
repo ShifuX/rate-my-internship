@@ -119,7 +119,7 @@ const ResultPage = async ({ params }: { params: { id: string } }) => {
         />
       </div>
 
-      <div className="pl-80 laptop:pl-32 pb-6 mt-20">
+      <div className="pl-80 laptop:pl-32 tablet:pl-10 pb-6 mt-20">
         <RoleSelector roles={roles} reviews={company.reviews} />
       </div>
     </div>
