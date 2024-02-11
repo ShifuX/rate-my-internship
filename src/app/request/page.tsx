@@ -34,6 +34,27 @@ async function createCompanyRequest(data: FormData) {
         },
       },
     });
+
+    // temp
+    // if (updatedRecord.count > 0) {
+    //   // create company
+    //   await prisma.company.create({
+    //     data: {
+    //       name: companyName,
+    //       logo_path: "/RMI_logo_snip.JPG",
+    //     },
+    //   });
+
+    //   // update request record
+    //   await prisma.companyAddRequest.update({
+    //     where: {
+    //       name: companyName,
+    //     },
+    //     data: {
+    //       added: true,
+    //     },
+    //   });
+    // }
   } else {
     await prisma.companyAddRequest.create({
       data: {
