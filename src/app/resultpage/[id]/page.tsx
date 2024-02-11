@@ -8,6 +8,8 @@ import {
 import prisma from "../../db";
 
 async function getCompany(company: string) {
+  company = decodeURI(company);
+
   // logic to get company from db
   return await prisma.company.findFirst({
     where: {
