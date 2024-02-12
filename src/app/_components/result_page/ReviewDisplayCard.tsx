@@ -39,7 +39,7 @@ const ReviewDisplayCard = ({
       <div className="relative w-full flex flex-row-reverse">
         <div className="font-bold text-sm">{`${
           Month[date.getMonth()]
-        } ${date.getDay()}, ${date.getFullYear()}`}</div>
+        } ${date.getDate()}, ${date.getFullYear()}`}</div>
       </div>
       <div className="flex desktop2k:flex-row desktop1080:flex-row laptop:flex-row tablet:flex-row phone:flex-col">
         <ReviewSideRatings

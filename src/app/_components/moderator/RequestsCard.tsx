@@ -26,7 +26,7 @@ const RequestsCard = ({ name, count, date }: RequestCardI) => {
         <div>Name: {name}</div>
         <div>Count: {count}</div>
         <div>
-          Date: {`${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`}
+          Date: {`${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`}
         </div>
         <div className="pt-1">
           <input
