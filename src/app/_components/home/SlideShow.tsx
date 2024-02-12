@@ -32,7 +32,7 @@ const SlideShow = ({ imgAndName }: PropsI) => {
               src={obj.img}
               alt="company logo"
               fill={true}
-              className="shadow-md object-cover"
+              className="shadow-md object-contain"
               onClick={() => HandleClick(obj.name)}
               key={obj.name}
             />

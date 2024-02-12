@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "internship",
     "internship review",
   ],
+  icons: "/favicon.png",
 };
 
 export default async function RootLayout({
