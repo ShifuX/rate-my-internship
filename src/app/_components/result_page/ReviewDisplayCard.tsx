@@ -48,9 +48,9 @@ const ReviewDisplayCard = ({
           rating1={overallRating}
           rating2={challengeRating}
         />
-        <div className="flex-col space-y-10 pl-20 desktop2k:pl-20 desktop1080:pl-20 laptop:pl-20 tablet:pl-20 phone:pl-1">
+        <div className="w-3/5 flex-col space-y-10 pl-20 desktop2k:pl-20 desktop1080:pl-20 laptop:pl-20 tablet:pl-20 phone:pl-1">
           <ReviewTopInfo would_retake={would_retake} pay={pay} role={role} />
-          <div className="break-words w-3/5">
+          <div className="break-words w-4/5">
             <div>{review}</div>
           </div>
         </div>
