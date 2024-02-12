@@ -96,11 +96,13 @@ async function HandleForm(data: FormData) {
 
   const file = data.get("logoFile") as File;
   const option = data.get("addOrDeleteOption")?.toString();
-  const name = data.get("companyName")?.toString();
+  let name = data.get("companyName")?.toString();
 
   if (file.name === "filename") return;
 
   if (!name || !option) return;
+
+  name = decodeURI(name);
 
   // store in S3 bucket first and get the URL for the image
   // pass the url to the logo_path
