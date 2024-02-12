@@ -4,7 +4,6 @@ import "./globals.css";
 import SessionProvider from "./components/SessionProvider";
 import { getServerSession } from "next-auth";
 import { Analytics } from "@vercel/analytics/react";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
     "internship",
     "internship review",
   ],
-  icons: "/favicon.png",
 };
 
 export default async function RootLayout({
@@ -34,10 +32,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
-        <title>Rate My Internship</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico?v=2" />
-      </Head>
       <body className={inter.className}>
         <SessionProvider session={session}>{children}</SessionProvider>
         <Analytics />
