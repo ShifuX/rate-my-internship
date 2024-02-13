@@ -52,9 +52,6 @@ export default async function Home() {
     for (let i = 0; i < 4; i++) {
       topFourCompanies.push(sortedCompanies[i]);
     }
-    console.log(sortedCompanies);
-
-    console.log(topFourCompanies);
 
     return topFourCompanies;
   }
