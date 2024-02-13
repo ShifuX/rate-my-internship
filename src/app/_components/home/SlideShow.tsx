@@ -7,13 +7,10 @@ interface PropsI {
   imgAndName: { img: string; name: string }[];
 }
 
-// Fix the onClick for the images: the relative is what is making it fail
-
 const SlideShow = ({ imgAndName }: PropsI) => {
   const router = useRouter();
 
   function HandleClick(companyName: string) {
-    console.log(companyName);
     router.push(`/resultpage/${companyName}`);
   }
 
