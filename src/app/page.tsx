@@ -1,33 +1,62 @@
 import Image from "next/image";
 import { Footer, Logo, SearchBar, SlideShow } from "./_components";
 import prisma from "./db";
+import bcrypt from "bcrypt";
+
+// interface ImageAndNameAndCountI {
+//   company: {
+//     img: string;
+//     name: string;
+//     reviewCount: number;
+//   }[];
+// }
 
 async function getCompanyImages() {
   const companies = await prisma.company.findMany({
-    take: 4,
-    include: {
-      reviews: true,
+    select: {
+      name: true,
+      logo_path: true,
+      review_count: true,
     },
   });
 
   return companies.map((company) => {
-    return { img: company.logo_path, name: company.name };
+    return {
+      img: company.logo_path,
+      name: company.name,
+      reviewCount: company.review_count,
+    };
   });
-}
-
-async function GetCompanies() {
-  const companies = await prisma.company.findMany({
-    select: {
-      name: true,
-    },
-  });
-
-  return companies.map((company) => company.name);
 }
 
 export default async function Home() {
-  const imageAndName = await getCompanyImages();
-  const companyNames = await GetCompanies();
+  const imageAndNameAndReviewCount = await getCompanyImages();
+  const companyNames = imageAndNameAndReviewCount.map(
+    (company) => company.name
+  );
+
+  function GetTopFourCompaniesMostRatings() {
+    const topFourCompanies = [];
+    const sortedCompanies = imageAndNameAndReviewCount.sort((a, b) => {
+      if (a.reviewCount === 0) {
+        a.reviewCount = Infinity;
+      }
+
+      if (b.reviewCount === 0) {
+        b.reviewCount = Infinity;
+      }
+
+      return a.reviewCount - b.reviewCount;
+    });
+
+    for (let i = 0; i < 4; i++) {
+      topFourCompanies.push(sortedCompanies[i]);
+    }
+
+    return topFourCompanies;
+  }
+
+  const mostRatedCompanies = GetTopFourCompaniesMostRatings();
 
   return (
     <div className=" relative">
@@ -51,11 +80,11 @@ export default async function Home() {
         </div>
       </div>
       <div className="pb-52 flex flex-col space-y-32 justify-center items-center ">
-        <div className="h-10 text-6xl desktop2k:text-6xl desktop1080:text-6xl laptop:text-6xl tablet:text-6xl phone:text-4xl font-bold font-nunito">
-          A Quick Glance
+        <div className="h-10 text-6xl desktop2k:text-6xl desktop1080:text-6xl laptop:text-6xl tablet:text-6xl phone:text-3xl font-bold font-nunito">
+          Most Rated Companies
         </div>
         <div className="pb-52">
-          <SlideShow imgAndName={imageAndName} />
+          <SlideShow imgAndName={mostRatedCompanies} />
         </div>
       </div>
       <Footer />

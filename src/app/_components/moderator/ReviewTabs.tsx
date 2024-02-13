@@ -22,6 +22,8 @@ interface ReviewsI {
 async function ReviewedAction(id: string, companyId: string) {
   "use server";
 
+  companyId = decodeURI(companyId);
+
   await prisma.reviews.update({
     where: {
       id,
