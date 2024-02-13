@@ -25,10 +25,11 @@ const FileCard = ({ textLabel, inputID }: PropI) => {
         <div className="bg-[url('/warn-icon.png')] bg-no-repeat bg-contain h-9 w-12 mt-4"></div>
         <div className="text-sm p-2 bg-yellow-200 font-bold rounded-xl">
           Make sure to cross out any sensitive information before submitting, it
-          will be deleted from storage upon review
+          will be deleted from storage upon review (used to verify pay and job
+          role/title)
         </div>
       </div>
-      <div className="pl-72 pt-5">
+      <div className=" desktop2k:pl-72 desktop1080:pl-72 laptop:pl-72 tablet:pl-52 pt-5">
         <input
           type="file"
           name={inputID}

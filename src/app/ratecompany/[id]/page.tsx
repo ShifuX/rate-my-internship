@@ -1,6 +1,7 @@
 import prisma from "../../db";
 import {
   FileCard,
+  Footer,
   NavBar,
   PayCard,
   RateCard,
@@ -64,11 +65,16 @@ const page = ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="h-screen">
+    <div className="phone:relative">
       <NavBar />
+      <div className="phone:inline desktop2k:hidden desktop1080:hidden laptop:hidden tablet:hidden font-medium">
+        Rating is currently unavailable on mobile devices, please use a
+        computer, laptop, or tablet
+      </div>
       <form
         action={addReview}
-        className="w-full flex flex-col space-y-8 pt-20 justify-center content-center items-center pb-20"
+        className="w-full flex flex-col space-y-8 pt-20 justify-center content-center items-center pb-48 phone:invisible desktop2k:visible
+         desktop1080:visible laptop:visible tablet:visible"
       >
         <RateCard
           labelName="Overall internship rating"
@@ -97,6 +103,7 @@ const page = ({ params }: { params: { id: string } }) => {
         <ReviewCard textLabel="Write your review" inputID="review" />
         <SubmitCard />
       </form>
+      <Footer />
     </div>
   );
 };
