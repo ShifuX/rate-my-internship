@@ -19,3 +19,4 @@ export { default as ReviewList } from "./result_page/ReviewList";
 export { default as SignOut } from "./moderator/SignOut";
 export { default as Logo } from "./home/Logo";
 export { default as RequestsCard } from "./moderator/RequestsCard";
+export { default as Footer } from "./home/Footer";

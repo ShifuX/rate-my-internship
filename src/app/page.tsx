@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Logo, SearchBar, SlideShow } from "./_components";
+import { Footer, Logo, SearchBar, SlideShow } from "./_components";
 import prisma from "./db";
 
 async function getCompanyImages() {
@@ -30,7 +30,7 @@ export default async function Home() {
   const companyNames = await GetCompanies();
 
   return (
-    <>
+    <div className=" relative">
       <div className="relative w-32 h-16 ml-10 mt-4">
         <Logo />
       </div>
@@ -50,14 +50,15 @@ export default async function Home() {
           <SearchBar location="home" companyNames={companyNames} />
         </div>
       </div>
-      <div className="h-screen flex flex-col space-y-32 justify-center items-center ">
+      <div className="pb-52 flex flex-col space-y-32 justify-center items-center ">
         <div className="h-10 text-6xl desktop2k:text-6xl desktop1080:text-6xl laptop:text-6xl tablet:text-6xl phone:text-4xl font-bold font-nunito">
           A Quick Glance
         </div>
-        <div className="pb-32">
+        <div className="pb-52">
           <SlideShow imgAndName={imageAndName} />
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
