@@ -12,7 +12,7 @@ const SearchBar = ({ location, companyNames }: SearchBarI) => {
   const router = useRouter();
   const NAVBARSIZE =
     location === "home"
-      ? "desktop2k:text-xl desktop1080:text-xl laptop:text-xl tablet:text-xl phone:text-lg rounded-3xl h-12 w-96 desktop2k:w-108 desktop1080:w-96 laptop:w-96 phone:w-4/5"
+      ? "desktop2k:text-xl desktop1080:text-xl laptop:text-xl tablet:text-xl phone:text-sm rounded-3xl h-12 w-96 desktop2k:w-108 desktop1080:w-96 laptop:w-96 phone:w-52"
       : "text-lg rounded-3xl h-10 w-96 desktop2k:w-96 desktop1080:w-96 laptop:w-96 phone:w-4/5";
   let [searchInput, setSearchInput] = useState("");
   let [filteredNames, setFilteredNames] = useState<string[]>();
