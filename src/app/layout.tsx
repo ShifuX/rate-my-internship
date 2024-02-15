@@ -32,7 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <meta property="og:image" content="/RMI_logo_snip.JPG"></meta>
+      <meta property="og:image" content="https://www.ratemyinternship.xyz/RMI_logo_snip.JPG"></meta>
       <body className={inter.className}>
         <SessionProvider session={session}>{children}</SessionProvider>
         <Analytics />
