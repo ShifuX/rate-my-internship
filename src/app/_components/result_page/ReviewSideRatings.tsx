@@ -12,7 +12,8 @@ const ReviewSideRatings = ({
   rating2,
 }: PropI) => {
   return (
-    <div className=" -mt-5">
+    <div >
+      <div className="flex desktop2k:flex-col desktop1080:flex-col laptop:flex-col tablet:flex-col phone:flex-row desktop2k:space-x-0 desktop1080:space-x-0 laptop:space-x-0 tablet:space-x-0 phone:space-x-4">
       <div className="text-center w-24 text-lg">
         <div>{rateName1}</div>
         <div
@@ -33,7 +34,7 @@ const ReviewSideRatings = ({
           {`${rating1}${rating1.includes(".") ? "" : ".0"}`}
         </div>
       </div>
-      <div className="text-center w-24 text-lg pt-4">
+      <div className="text-center w-24 text-lg">
         <div>{rateName2}</div>
         <div
           className={`w-24 h-24 ${
@@ -52,6 +53,7 @@ const ReviewSideRatings = ({
         >
           {`${rating2}${rating2.includes(".") ? "" : ".0"}`}
         </div>
+      </div>
       </div>
     </div>
   );

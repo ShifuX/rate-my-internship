@@ -18,7 +18,8 @@ const RatingDistribution = ({
       <div className=" bg-gray-100 laptop:w-128 desktop1080:w-128 desktop2k:w-128 tablet:w-72 phone:w-72 h-80 ">
         <div className="font-bold text-lg relative left-8 top-2">Ratings:</div>
         <div className="w-full h-full flex justify-center items-center">
-          <div className="flex space-x-10 pb-6">
+          <div className="flex desktop2k:flex-row desktop1080:flex-row laptop:flex-row tablet:flex-row phone:flex-col desktop2k:space-x-10 desktop1080:space-x-10 laptop:space-x-10 tablet:space-x-10
+            desktop2k:space-y-0 desktop1080:space-y-0 laptop:-space-y-0 tablet:space-y-0 phone:space-y-4 pb-6">
             <ReviewSideRatings
               rateName1="Overall"
               rateName2="Challenge"
