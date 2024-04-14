@@ -7,3 +7,4 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - Run: npx prisma generate
 - Run: npx prisma migrate dev
 - To start the project run: npm run dev
+- Now using supabase for db
