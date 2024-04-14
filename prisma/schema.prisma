@@ -1,7 +1,7 @@
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 generator client {
@@ -42,7 +42,7 @@ model Reviews {
   fun_rating         Decimal
   challenge_rating   Decimal
   pay                Decimal
-  review             String   @db.LongText
+  review             String
   role               String
   would_retake       Boolean
   pdf                Bytes
