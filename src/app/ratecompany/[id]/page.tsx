@@ -1,5 +1,6 @@
 import prisma from "../../db";
 import {
+  ChallengeRateCard,
   FileCard,
   Footer,
   NavBar,
@@ -88,7 +89,7 @@ const page = ({ params }: { params: { id: string } }) => {
           labelName="Rate how much you learned"
           inputID="rateBoxLearn"
         />
-        <RateCard
+        <ChallengeRateCard
           labelName="Rate how challenging the internship was"
           inputID="rateBoxChallenge"
         />

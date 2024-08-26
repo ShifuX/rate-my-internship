@@ -20,3 +20,4 @@ export { default as SignOut } from "./moderator/SignOut";
 export { default as Logo } from "./home/Logo";
 export { default as RequestsCard } from "./moderator/RequestsCard";
 export { default as Footer } from "./home/Footer";
+export { default as ChallengeRateCard } from "./rating_page/ChallengeRateCard";
